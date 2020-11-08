@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <File name="FileAppenderCsvParameterLayout" fileName="application-${date:yyyyMMdd}-CsvParameter.log" immediateFlush="false" append="true">
+            <CsvParameterLayout delimiter="," header="va1,val2,val3\n"/>
+        </File>
+
+        <File name="FileAppenderCsvLogEventLayout" fileName="application-${date:yyyyMMdd}-CsvLogEvent.log" immediateFlush="false" append="true">
+            <CsvLogEventLayout delimiter=","/>
+        </File>
+
+    </Appenders>
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppenderCsvParameterLayout"/>
+            <AppenderRef ref="FileAppenderCsvLogEventLayout" />
+        </Root>
+    </Loggers>
+</Configuration>
